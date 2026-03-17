@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="DIP/DIP.csproj" />
+  <Project Path="ISP/ISP.csproj" />
+  <Project Path="LSP/LSP.csproj" />
+  <Project Path="OCP/OCP.csproj" />
+  <Project Path="SRP/SRP.csproj" />
+</Solution>

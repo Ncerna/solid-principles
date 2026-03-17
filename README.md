@@ -44,4 +44,60 @@ public class InvoiceService
         Console.WriteLine($"Sending invoice to {email}");
     }
 }
+## 2️⃣ Open/Closed Principle (OCP)
+
+**Definition:**  
+Software entities should be open for extension, but closed for modification.  
+
+**Problem it solves:**  
+- Avoids modifying existing code when adding new functionality  
+- Reduces risk of introducing bugs  
+- Improves maintainability  
+
+**When to use:**  
+- When the system is expected to grow with new behavior  
+- When adding features frequently  
+
+**Example:**
+
+```csharp
+// OCP: DiscountService is closed for modification but open for extension
+public interface IDiscountStrategy
+{
+    decimal Calculate(decimal price);
+}
+
+public class VipDiscount : IDiscountStrategy
+{
+    public decimal Calculate(decimal price)
+    {
+        return price * 0.8m;
+    }
+}
+
+public class RegularDiscount : IDiscountStrategy
+{
+    public decimal Calculate(decimal price)
+    {
+        return price * 0.95m;
+    }
+}
+
+public class StudentDiscount : IDiscountStrategy
+{
+    public decimal Calculate(decimal price)
+    {
+        return price * 0.9m;
+    }
+}
+
+public class DiscountService
+{
+    // OCP: Behavior is extended via strategies
+    public decimal CalculateDiscount(IDiscountStrategy strategy, decimal price)
+    {
+        return strategy.Calculate(price);
+    }
+}
+
 
